@@ -1,0 +1,323 @@
+
+:root {
+  --night: #0B1F4B;   
+  --gold:  #E0A526;  
+  --red:   #C0392B;   
+  --sand:  #FAF6EE;   
+  --header-height: 64px;
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #222;
+  background: var(--sand);
+  /* push content down so it does not hide under the fixed header */
+  padding-top: var(--header-height);
+}
+
+
+h1, h2, h3 {
+  font-family: Georgia, serif;
+  color: var(--night);
+  margin-top: 0;
+}
+
+/* ---------- 3. Fixed header (flexbox) ---------- */
+.site-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 100;                    /* stays above the page content */
+  display: flex;
+  justify-content: space-between;  /* logo left, menu right */
+  align-items: center;             /* vertical centring */
+  padding: 0 16px;
+  background: var(--night);
+}
+
+.logo {
+  font-family: Georgia, serif;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: white;
+  text-decoration: none;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+.menu {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* ---------- 4. Menu links in LVHA order ---------- */
+/* L(ink) → V(isited) → H(over) → A(ctive)
+   Same specificity, so the LAST rule wins: hover must come after visited. */
+.menu a:link,
+.menu a:visited {
+  color: white;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-bottom: 3px solid transparent;
+}
+
+.menu a:hover {
+  background: var(--gold);
+  color: var(--night);
+}
+
+.menu a:active {
+  background: #c38d1c;   /* a little darker gold while pressed */
+}
+
+/* current page: gold bottom border */
+.menu a.active {
+  border-bottom-color: var(--gold);
+}
+
+/* "Book now" button in the header: hidden on small phones (not enough room) */
+.menu a.btn {
+  display: none;
+}
+
+/* ---------- 5. Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 10px 22px;
+  border-radius: 6px;
+  background: var(--night);
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.btn:hover {
+  background: var(--gold);
+  color: var(--night);
+}
+
+/* header button: gold outline so it is visible on the dark header */
+.menu a.btn {
+  border: 2px solid var(--gold);
+  margin-left: 8px;
+}
+
+/* button shrinks slightly when pressed */
+.btn:active {
+  transform: scale(0.95);
+}
+
+/* ---------- 6. Hero ---------- */
+.hero {
+  text-align: center;
+  padding: 60px 16px;
+  background: linear-gradient(135deg, #f6e2b3, var(--sand));
+}
+
+.hero h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.hero p {
+  margin: 0 0 24px;
+}
+
+/* ---------- 7. Tours section (ID selector) ---------- */
+#tours {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+#tours h2 {
+  text-align: center;
+}
+
+/* phone: 1 card per row */
+.cards {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* ---------- 8. Cards ---------- */
+.card {
+  position: relative;   /* the badge is positioned inside the card */
+  padding: 20px;
+  border-radius: 10px;
+  background: white;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+/* card rises on hover */
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.badge {
+  position: absolute;   /* relative to .card, not the page */
+  top: 10px;
+  right: 10px;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: var(--gold);
+  color: var(--night);
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.card-img {
+  height: 160px;
+  width: 100%;
+  margin-bottom: 16px;
+  border-radius: 8px;
+  background: var(--night);
+  font-size: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card p {
+  margin: 4px 0;
+}
+
+.price {
+  font-weight: bold;
+  color: var(--night);
+}
+
+/* ---------- 9. Footer ---------- */
+.site-footer {
+  background: var(--night);
+  color: white;
+  text-align: center;
+  padding: 20px 16px;
+}
+
+/* ---------- 10. Booking page ---------- */
+.booking {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 40px 16px;
+}
+
+.form-group {
+  margin-bottom: 18px;
+}
+
+/* label above the field */
+.form-group label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: bold;
+  color: var(--night);
+}
+
+/* red star added by CSS, not typed in the HTML */
+label.required::after {
+  content: " *";
+  color: var(--red);
+}
+
+.form-group input,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  background: white;
+}
+
+/* clear focus style */
+.form-group input:focus,
+.form-group select:focus {
+  outline: none;
+  border-color: var(--night);
+  box-shadow: 0 0 0 3px rgba(224, 165, 38, 0.5);
+}
+
+/* field with an error (class added by JavaScript) */
+.form-group .invalid {
+  border-color: var(--red);
+}
+
+.total {
+  padding: 12px;
+  border-radius: 6px;
+  background: white;
+  border-left: 4px solid var(--gold);
+  font-weight: bold;
+  color: var(--night);
+}
+
+.booking .btn {
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.message {
+  margin-top: 16px;
+  font-weight: bold;
+}
+
+.message.error {
+  color: var(--red);
+}
+
+.message.success {
+  color: #1e7e34;
+}
+
+/* ---------- Tablet (768px +) ---------- */
+@media (min-width: 768px) {
+  .site-header {
+    padding: 0 32px;
+  }
+
+  .menu a.btn {
+    display: inline-block;
+  }
+
+  .hero {
+    padding: 100px 32px;
+  }
+
+  .hero h1 {
+    font-size: 2.8rem;
+  }
+
+  /* 2 cards per row */
+  .cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ---------- Desktop (1200px +) ---------- */
+@media (min-width: 1200px) {
+  /* 3 cards per row */
+  .cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

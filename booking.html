@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registan Travel · Booking</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <a href="index.html" class="logo">Registan <span>Travel</span></a>
+    <nav class="menu">
+      <a href="index.html">Home</a>
+      <a href="booking.html" class="active">Booking</a>
+      <a href="booking.html" class="btn">Book now</a>
+    </nav>
+  </header>
+
+  <main class="booking">
+    <h1>Book a tour</h1>
+    <p>Fill in the form and we will contact you to confirm.</p>
+
+    <!-- novalidate: we check the form ourselves in js/main.js -->
+    <form id="booking-form" novalidate>
+
+      <div class="form-group">
+        <label for="name" class="required">Full name</label>
+        <input type="text" id="name" name="name">
+      </div>
+
+      <div class="form-group">
+        <label for="email" class="required">Email</label>
+        <input type="email" id="email" name="email">
+      </div>
+
+      <div class="form-group">
+        <label for="tour">Tour</label>
+        <!-- value = price per person in USD -->
+        <select id="tour" name="tour">
+          <option value="35">Old Tashkent Walk · Tashkent · 1 day</option>
+          <option value="120">Registan &amp; Gur-e-Amir · Samarkand · 2 days</option>
+          <option value="210">Khiva Itchan Kala · Khiva · 3 days</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label for="travellers">Number of travellers</label>
+        <input type="number" id="travellers" name="travellers" min="1" max="12" value="1">
+      </div>
+
+      <div class="form-group">
+        <label for="date">Date</label>
+        <input type="date" id="date" name="date">
+      </div>
+
+      <p id="total" class="total">Total: 1 × 35 USD = 35 USD</p>
+
+      <button type="submit" class="btn">Send request</button>
+
+      <p id="message" class="message"></p>
+    </form>
+  </main>
+
+  <footer class="site-footer">
+    <p>&copy; 2026 Registan Travel · Tashkent, Uzbekistan</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

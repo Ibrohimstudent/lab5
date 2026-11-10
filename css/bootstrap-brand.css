@@ -1,0 +1,91 @@
+/* Brand colours on top of Bootstrap 5 (index-bootstrap.html only) */
+
+:root {
+  --night: #0B1F4B;
+  --gold:  #E0A526;
+  --sand:  #FAF6EE;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background: var(--sand);
+  padding-top: 64px;   /* space for the fixed navbar */
+}
+
+.navbar {
+  min-height: 64px;
+}
+
+h1, h2, h3, .card-title, .logo {
+  font-family: Georgia, serif;
+  color: var(--night);
+}
+
+.bg-night {
+  background-color: var(--night);
+}
+
+.logo {
+  color: white;
+  font-weight: bold;
+}
+
+.logo span {
+  color: var(--gold);
+}
+
+.navbar .nav-link {
+  color: white;
+}
+
+.navbar .nav-link:hover {
+  background: var(--gold);
+  color: var(--night);
+}
+
+.navbar .nav-link.active {
+  border-bottom: 3px solid var(--gold);
+}
+
+.btn-night {
+  background: var(--night);
+  color: white;
+}
+
+.btn-night:hover,
+.btn-night-outline:hover {
+  background: var(--gold);
+  color: var(--night);
+}
+
+.btn-night-outline {
+  border: 2px solid var(--gold);
+  color: white;
+  font-weight: bold;
+}
+
+.hero {
+  background: linear-gradient(135deg, #f6e2b3, var(--sand));
+}
+
+.badge-gold {
+  background: var(--gold);
+  color: var(--night);
+}
+
+.tour-card {
+  transition: transform 0.2s;
+}
+
+.tour-card:hover {
+  transform: translateY(-6px);
+}
+
+.tour-img {
+  height: 140px;
+  background: var(--night);
+  font-size: 3.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
